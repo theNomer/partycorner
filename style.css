@@ -6,6 +6,7 @@ body {
     url("src/ducks.jpg") repeat;
 }
 
+/* Title on the left, home button on the right */
 header {
   display: flex;
   justify-content: space-between;
@@ -25,7 +26,7 @@ header h1 a {
   text-decoration: none;
 }
 
-/* Home button on the right of the header in games */
+/* Home button on the right of the header, links back to denomer.fun */
 .home {
   padding: 0.3rem 0.8rem;
   border-radius: 8px;
@@ -34,6 +35,9 @@ header h1 a {
   text-decoration: none;
 }
 
+.game-title {
+  text-align: center;
+}
 
 .gallery {
   display: grid;
