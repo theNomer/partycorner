@@ -73,11 +73,12 @@ document.getElementById("add-player").addEventListener("submit", (e) => {
 
 // --- Setup: picking question types ---
 
-// Add a chip for each type in questions.js, before the "Give me fun" chip
+// Add a chip for each type in questions.js, before the "Give Me Crazy" chip.
+// The types are "coming soon" for now, so they're disabled and only "Give Me Crazy" can be picked.
 for (const [key, category] of Object.entries(CATEGORIES)) {
   const label = document.createElement("label");
   label.className = "chip";
-  label.innerHTML = `<input type="checkbox" value="${key}"><span>${category.name}</span>`;
+  label.innerHTML = `<input type="checkbox" value="${key}" disabled><span>${category.name}</span>`;
   categoryBox.insertBefore(label, allCategories.parentElement);
 }
 
@@ -87,7 +88,7 @@ function chosenCategories() {
   return categoryInputs.filter((input) => input.checked).map((input) => input.value);
 }
 
-// "Give me fun" turns every type on or off
+// "Give Me Crazy" turns every type on or off
 allCategories.addEventListener("change", () => {
   for (const input of categoryInputs) {
     input.checked = allCategories.checked;
@@ -95,7 +96,7 @@ allCategories.addEventListener("change", () => {
   updateStartButton();
 });
 
-// Picking types one by one keeps "Give me fun" in sync
+// Picking types one by one keeps "Give Me Crazy" in sync
 for (const input of categoryInputs) {
   input.addEventListener("change", () => {
     allCategories.checked = categoryInputs.every((i) => i.checked);

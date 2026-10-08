@@ -113,7 +113,13 @@ input {
   background: rgb(251, 185, 84);
 }
 
-/* "Give me fun" stands out: warm gradient and a soft glow */
+/* "Coming soon" types can't be picked yet */
+.chip input:disabled + span {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* "Give Me Crazy" stands out: warm gradient and a soft glow */
 .chip-fun span {
   border-color: #f28482;
   background: linear-gradient(135deg, #fff, #ffe5d9);

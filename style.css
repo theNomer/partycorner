@@ -6,6 +6,12 @@ body {
     url("src/ducks.jpg") repeat;
 }
 
+/* Font for the deNomer link (path is relative to this file, so it works from game pages too) */
+@font-face {
+  font-family: "Cream Cake";
+  src: url("src/Cream Cake Bold.otf") format("opentype");
+}
+
 /* Title on the left, home button on the right */
 header {
   display: flex;
@@ -26,11 +32,10 @@ header h1 a {
   text-decoration: none;
 }
 
-/* Home button on the right of the header, links back to denomer.fun */
+/* Cursive deNomer link on the right of the header, links back to denomer.fun */
 .home {
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  background: #fff;
+  font-family: "Cream Cake", cursive;
+  font-size: 1.3rem;
   color: inherit;
   text-decoration: none;
 }
