@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomer's Fun Corner</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1><a href="index.html">Truth Or Dare</a></h1>
+    <a class="home" href="../../index.html">Home</a>
+  </header>
+
+  <main class="game">
+    <!-- Step 1: enter player names -->
+    <section id="setup">
+    <p>Rules: Players take turns answering truths and completing dares. If you chicken out - you drink. Simple as that.</p>
+      <h2>Who's playing?</h2>
+      <form id="add-player">
+        <input id="player-name" type="text" placeholder="Player name" autocomplete="off">
+        <button type="submit">Add</button>
+      </form>
+      <ul id="player-list"></ul>
+
+      <h2>Pick your vibe</h2>
+      <div id="categories" class="chips">
+        <!-- one chip per question type, filled in by game.js -->
+        <label class="chip chip-fun">
+          <input type="checkbox" id="all-categories">
+          <span>Give me fun</span>
+        </label>
+      </div>
+
+      <button id="start" disabled>Start game</button>
+    </section>
+
+    <!-- Step 2: current player picks truth or dare -->
+    <section id="choose" hidden>
+      <h2 id="current-player"></h2>
+      <div class="choices">
+        <button id="truth">Truth</button>
+        <button id="dare">Dare</button>
+      </div>
+    </section>
+
+    <!-- Step 3: show the question -->
+    <section id="question" hidden>
+      <p id="question-type"></p>
+      <h2 id="question-text"></h2>
+      <button id="next">Next player</button>
+    </section>
+  </main>
+
+  <script src="../../shared.js"></script>
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

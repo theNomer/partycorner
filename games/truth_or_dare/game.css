@@ -1,0 +1,134 @@
+.game {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgb(251, 185, 84);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+#add-player {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+#player-list {
+  list-style: none;
+  padding: 0;
+}
+
+#player-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 300px;
+  margin: 0.5rem auto;
+}
+
+.remove {
+  padding: 0.2rem 0.5rem;
+  background: #eee;
+}
+
+#current-player {
+  font-size: 2rem;
+}
+
+.choices {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.choices button {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+}
+
+#truth {
+  background: #2a9d8f;
+  color: #fff;
+}
+
+#dare {
+  background: #f28482;
+  color: #fff;
+}
+
+#question-text {
+  margin: 1.5rem 0;
+}
+
+/* Question type picker */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Hide the checkbox itself but keep it usable with the keyboard */
+.chip input {
+  position: absolute;
+  opacity: 0;
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid #333;
+}
+
+.chip span {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 2px solid rgb(251, 185, 84);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.chip input:checked + span {
+  background: rgb(251, 185, 84);
+}
+
+/* "Give me fun" stands out: warm gradient and a soft glow */
+.chip-fun span {
+  border-color: #f28482;
+  background: linear-gradient(135deg, #fff, #ffe5d9);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(242, 132, 130, 0.5);
+}
+
+.chip-fun input:checked + span {
+  border-color: #f28482;
+  background: linear-gradient(135deg, rgb(251, 185, 84), #f28482);
+  color: #fff;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 8px rgba(242, 132, 130, 0.6); }
+  to   { box-shadow: 0 0 18px rgba(242, 132, 130, 1); }
+}

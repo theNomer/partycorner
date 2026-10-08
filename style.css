@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+    background:
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url("src/ducks.jpg") repeat;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgb(251, 185, 84);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Home button on the right of the header in games */
+.home {
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.thumb {
+  height: 150px;
+  border-radius: 12px;
+}
