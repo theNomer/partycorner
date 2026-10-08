@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Truth or Dare - Party Corner</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../main.css">
   <link rel="stylesheet" href="game.css">
 </head>
 <body>
@@ -13,45 +16,52 @@
     <a class="home" href="https://denomer.fun">deNomer</a>
   </header>
 
-  <main class="game">
-    <h2 class="game-title">Truth or Dare</h2>
-    <!-- Step 1: enter player names -->
-    <section id="setup">
-    <p>Rules: Players take turns answering truths and completing dares. If you chicken out - you drink. Simple as that.</p>
-      <h2>Who's playing?</h2>
-      <form id="add-player">
-        <input id="player-name" type="text" placeholder="Player name" autocomplete="off">
-        <button type="submit">Add</button>
-      </form>
-      <ul id="player-list"></ul>
+  <main class="page">
+    <div class="game-head">
+      <p class="label">Game one</p>
+      <h2 class="section-title">Truth or <span class="pink">Dare.</span></h2>
+    </div>
 
-      <h2>Pick your vibe</h2>
-      <div id="categories" class="chips">
-        <!-- one chip per question type, filled in by game.js -->
-        <label class="chip chip-fun">
-          <input type="checkbox" id="all-categories">
-          <span>Give Me Crazy</span>
-        </label>
-      </div>
+    <div class="panel">
+      <!-- Step 1: enter player names -->
+      <section id="setup">
+        <p>Rules: Players take turns answering truths and completing dares. If you chicken out - you drink. Simple as that.</p>
+        <h2>Who's playing?</h2>
+        <form id="add-player">
+          <input id="player-name" type="text" placeholder="Player name" autocomplete="off">
+          <button type="submit">Add</button>
+        </form>
+        <ul id="player-list"></ul>
 
-      <button id="start" disabled>Start game</button>
-    </section>
+        <h2>Pick your vibe</h2>
+        <div id="categories" class="chips">
+          <!-- one chip per question type, filled in by game.js -->
+          <label class="chip chip-fun">
+            <input type="checkbox" id="all-categories">
+            <span>Give Me Crazy</span>
+          </label>
+        </div>
 
-    <!-- Step 2: current player picks truth or dare -->
-    <section id="choose" hidden>
-      <h2 id="current-player"></h2>
-      <div class="choices">
-        <button id="truth">Truth</button>
-        <button id="dare">Dare</button>
-      </div>
-    </section>
+        <button id="start" disabled>Start game</button>
+      </section>
 
-    <!-- Step 3: show the question -->
-    <section id="question" hidden>
-      <p id="question-type"></p>
-      <h2 id="question-text"></h2>
-      <button id="next">Next player</button>
-    </section>
+      <!-- Step 2: current player picks truth or dare -->
+      <section id="choose" hidden>
+        <p class="label">Your turn</p>
+        <h2 id="current-player"></h2>
+        <div class="choices">
+          <button id="truth">Truth</button>
+          <button id="dare">Dare</button>
+        </div>
+      </section>
+
+      <!-- Step 3: show the question -->
+      <section id="question" hidden>
+        <p id="question-type"></p>
+        <h2 id="question-text"></h2>
+        <button id="next">Next player</button>
+      </section>
+    </div>
   </main>
 
   <script src="../shared.js"></script>

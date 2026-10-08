@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Party Corner</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <header class="site-header">
@@ -13,22 +16,33 @@
   </header>
 
   <main>
+    <section class="page">
+      <p class="label">What's on</p>
+      <h2 class="section-title">Pick your <span class="pink">poison.</span></h2>
 
-    <div class="gallery">
-        <a class="card" href="truth-or-dare/">
-        <div class="thumb" style="background: #f4a261"></div>
-        <div class="card-text">
-            <h2>Truth or Dare</h2>
-        </div>
+      <div class="gallery">
+        <a class="card card-pink" href="truth-or-dare/">
+          <p class="card-tag">01 — Classic</p>
+          <h3>Truth or Dare</h3>
+          <p>Spill a secret or do the dare. Chicken out and you drink.</p>
+          <span class="card-go">Play ↗</span>
         </a>
 
-        <a class="card" href="never-have-i-ever/">
-        <div class="thumb" style="background: #2a9d8f"></div>
-        <div class="card-text">
-            <h2>Never Have I Ever</h2>
-        </div>
+        <a class="card card-mint" href="never-have-i-ever/">
+          <p class="card-tag">02 — Confessions</p>
+          <h3>Never Have I Ever</h3>
+          <p>Coming soon.</p>
+          <span class="card-go">Peek ↗</span>
         </a>
-    </div>
+
+        <div class="card card-mustard">
+          <p class="card-tag">03 — ???</p>
+          <h3>More games</h3>
+          <p>New games on the way. Check back soon.</p>
+          <span class="card-go">Soon</span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="shared.js"></script>

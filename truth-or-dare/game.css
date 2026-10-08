@@ -1,35 +1,59 @@
-.game {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
+/* Truth or Dare controls, on top of the shared look in main.css */
+
+#setup > p {
+  margin-top: 0;
 }
 
+#setup h2 {
+  margin-top: 2rem;
+}
+
+/* Pink pill buttons */
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1.4rem;
   border: none;
-  border-radius: 8px;
-  background: rgb(251, 185, 84);
+  border-radius: 999px;
+  background: var(--pink);
+  color: var(--bg);
   font: inherit;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 0.15s;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: default;
 }
 
 input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--cream);
   font: inherit;
+}
+
+input:focus {
+  outline: 2px solid var(--mint);
+  outline-offset: 1px;
 }
 
 #add-player {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+}
+
+#add-player input {
+  flex: 1;
+  max-width: 260px;
+  min-width: 0;
 }
 
 #player-list {
@@ -41,44 +65,85 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 300px;
+  max-width: 340px;
   margin: 0.5rem auto;
+  padding: 0.4rem 0.4rem 0.4rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
 }
 
 .remove {
-  padding: 0.2rem 0.5rem;
-  background: #eee;
+  padding: 0.2rem 0.6rem;
+  background: transparent;
+  color: var(--muted);
 }
 
+.remove:hover {
+  color: var(--pink);
+}
+
+#start {
+  margin-top: 0.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Your-turn screen */
 #current-player {
-  font-size: 2rem;
+  margin: 0.2rem 0 1.5rem;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  line-height: 1;
+  color: var(--mustard);
 }
 
+/* Truth and Dare as two tilted sticky notes */
 .choices {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 .choices button {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  font-size: 1.3rem;
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px #0008;
 }
 
 #truth {
-  background: #2a9d8f;
-  color: #fff;
+  background: var(--mint);
+  transform: rotate(-3deg);
 }
 
 #dare {
-  background: #f28482;
-  color: #fff;
+  background: var(--pink);
+  transform: rotate(2deg);
+}
+
+.choices button:hover {
+  transform: rotate(0) translateY(-6px);
+}
+
+/* Question screen */
+#question-type {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mint);
 }
 
 #question-text {
-  margin: 1.5rem 0;
+  margin: 1rem 0 2rem;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1.15;
+  text-transform: none;
 }
 
 /* Question type picker */
@@ -97,44 +162,46 @@ input {
 }
 
 .chip input:focus-visible + span {
-  outline: 2px solid #333;
+  outline: 2px solid var(--mint);
 }
 
 .chip span {
   display: inline-block;
-  padding: 0.4rem 1rem;
-  border: 2px solid rgb(251, 185, 84);
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: var(--bg);
   cursor: pointer;
 }
 
 .chip input:checked + span {
-  background: rgb(251, 185, 84);
+  border-color: var(--mint);
+  background: var(--mint);
+  color: var(--bg);
 }
 
 /* "Coming soon" types can't be picked yet */
 .chip input:disabled + span {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: default;
 }
 
-/* "Give Me Crazy" stands out: warm gradient and a soft glow */
+/* "Give Me Crazy" stands out: pink-to-mustard and a soft glow */
 .chip-fun span {
-  border-color: #f28482;
-  background: linear-gradient(135deg, #fff, #ffe5d9);
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(242, 132, 130, 0.5);
+  border-color: var(--pink);
+  color: var(--pink);
+  font-weight: 700;
+  box-shadow: 0 0 12px #f2709c66;
 }
 
 .chip-fun input:checked + span {
-  border-color: #f28482;
-  background: linear-gradient(135deg, rgb(251, 185, 84), #f28482);
-  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--pink), var(--mustard));
+  color: var(--bg);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 8px rgba(242, 132, 130, 0.6); }
-  to   { box-shadow: 0 0 18px rgba(242, 132, 130, 1); }
+  from { box-shadow: 0 0 8px #f2709c99; }
+  to   { box-shadow: 0 0 22px #f2709c; }
 }
