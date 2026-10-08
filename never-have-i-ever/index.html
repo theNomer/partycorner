@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="game.css">
 </head>
 <body>
   <header class="site-header">
@@ -22,10 +23,37 @@
     </div>
 
     <div class="panel">
-      <h2>Coming soon</h2>
-      <p>This game is still being made. Check back soon.</p>
+      <!-- Step 1: pick prompt types -->
+      <section id="setup">
+        <p>Rules: Someone reads the prompt out loud. Everyone who HAS done it drinks. No lying - we'll know.</p>
+
+        <h2>Pick your vibe</h2>
+        <div id="categories" class="chips">
+          <!-- one chip per prompt type, filled in by game.js -->
+          <label class="chip chip-fun">
+            <input type="checkbox" id="all-categories">
+            <span>Give Me Crazy</span>
+          </label>
+        </div>
+
+        <button id="start" disabled>Start game</button>
+      </section>
+
+      <!-- Step 2: show prompts one after another -->
+      <section id="play" hidden>
+        <p id="prompt-type" class="prompt-type"></p>
+        <p class="label prefix">Never have I ever...</p>
+        <h2 id="prompt-text" class="prompt-text"></h2>
+        <div class="play-buttons">
+          <button id="change-vibe" class="button-ghost">Change vibe</button>
+          <button id="next">Next prompt</button>
+        </div>
+      </section>
     </div>
   </main>
+
   <script src="../shared.js"></script>
+  <script src="prompts.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+/* Never Have I Ever only; buttons and chips come from main.css */
+
+/* "Never have I ever…" in script, right above the prompt */
+.panel .prefix {
+  margin: 1.2rem 0 0;
+  font-size: 1.6rem;
+  color: var(--mustard);
+}
+
+.panel .prefix + .prompt-text {
+  margin-top: 0.4rem;
+}

@@ -137,3 +137,8 @@ document.getElementById("next").addEventListener("click", () => {
   turn = (turn + 1) % players.length;
   showTurn();
 });
+
+// Back to setup to pick other question types (players stay)
+document.getElementById("change-vibe").addEventListener("click", () => {
+  show(setup);
+});

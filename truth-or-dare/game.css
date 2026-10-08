@@ -1,48 +1,4 @@
-/* Truth or Dare controls, on top of the shared look in main.css */
-
-#setup > p {
-  margin-top: 0;
-}
-
-#setup h2 {
-  margin-top: 2rem;
-}
-
-/* Pink pill buttons */
-button {
-  padding: 0.65rem 1.4rem;
-  border: none;
-  border-radius: 999px;
-  background: var(--pink);
-  color: var(--bg);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-}
-
-button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
-input {
-  padding: 0.65rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--cream);
-  font: inherit;
-}
-
-input:focus {
-  outline: 2px solid var(--mint);
-  outline-offset: 1px;
-}
+/* Truth or Dare only; buttons, inputs and chips come from main.css */
 
 #add-player {
   display: flex;
@@ -83,12 +39,6 @@ input:focus {
   color: var(--pink);
 }
 
-#start {
-  margin-top: 0.5rem;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-}
-
 /* Your-turn screen */
 #current-player {
   margin: 0.2rem 0 1.5rem;
@@ -127,81 +77,4 @@ input:focus {
 
 .choices button:hover {
   transform: rotate(0) translateY(-6px);
-}
-
-/* Question screen */
-#question-type {
-  margin: 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mint);
-}
-
-#question-text {
-  margin: 1rem 0 2rem;
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
-  line-height: 1.15;
-  text-transform: none;
-}
-
-/* Question type picker */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-/* Hide the checkbox itself but keep it usable with the keyboard */
-.chip input {
-  position: absolute;
-  opacity: 0;
-}
-
-.chip input:focus-visible + span {
-  outline: 2px solid var(--mint);
-}
-
-.chip span {
-  display: inline-block;
-  padding: 0.45rem 1.1rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--bg);
-  cursor: pointer;
-}
-
-.chip input:checked + span {
-  border-color: var(--mint);
-  background: var(--mint);
-  color: var(--bg);
-}
-
-/* "Coming soon" types can't be picked yet */
-.chip input:disabled + span {
-  opacity: 0.4;
-  cursor: default;
-}
-
-/* "Give Me Crazy" stands out: pink-to-mustard and a soft glow */
-.chip-fun span {
-  border-color: var(--pink);
-  color: var(--pink);
-  font-weight: 700;
-  box-shadow: 0 0 12px #f2709c66;
-}
-
-.chip-fun input:checked + span {
-  border-color: transparent;
-  background: linear-gradient(135deg, var(--pink), var(--mustard));
-  color: var(--bg);
-  animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { box-shadow: 0 0 8px #f2709c99; }
-  to   { box-shadow: 0 0 22px #f2709c; }
 }

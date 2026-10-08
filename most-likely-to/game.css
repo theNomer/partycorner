@@ -1,0 +1,44 @@
+/* Most Likely To only; buttons and chips come from main.css */
+
+/* "Who's most likely to..." in script, right above the prompt */
+.panel .prefix {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--mustard);
+}
+
+.panel .prefix + .prompt-text {
+  margin-top: 0.4rem;
+}
+
+/* Big 3, 2, 1, POINT! */
+.panel .countdown {
+  margin: 0 0 1.5rem;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(4rem, 18vw, 7rem);
+  line-height: 1;
+  color: var(--mustard);
+}
+
+.panel .countdown.point {
+  color: var(--pink);
+}
+
+.countdown.pop {
+  animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(1.6); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+#count {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Space between the countdown button and the row under it */
+.play-buttons + .play-buttons {
+  margin-top: 1rem;
+}
