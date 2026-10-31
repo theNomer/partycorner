@@ -10,23 +10,13 @@ const playerList = document.getElementById("player-list");
 const startButton = document.getElementById("start");
 const categoryBox = document.getElementById("categories");
 const allCategories = document.getElementById("all-categories");
+const vibeInfo = document.getElementById("vibe-info");
 
 // Show one section and hide the others
 function show(section) {
   for (const s of [setup, choose, question]) {
     s.hidden = s !== section;
   }
-}
-
-// Shuffled decks so questions don't repeat until all have been used
-function makeDeck(list) {
-  let deck = [];
-  return function draw() {
-    if (deck.length === 0) {
-      deck = [...list].sort(() => Math.random() - 0.5);
-    }
-    return deck.pop();
-  };
 }
 
 // Filled in when the game starts, using the chosen question types
@@ -74,12 +64,17 @@ document.getElementById("add-player").addEventListener("submit", (e) => {
 // --- Setup: picking question types ---
 
 // Add a chip for each type in questions.js, before the "Give Me Crazy" chip.
-// The types are "coming soon" for now, so they're disabled and only "Give Me Crazy" can be picked.
+// Each chip gets a chip-<key> class so it lights up in its vibe's colors when picked.
 for (const [key, category] of Object.entries(CATEGORIES)) {
   const label = document.createElement("label");
-  label.className = "chip";
-  label.innerHTML = `<input type="checkbox" value="${key}" disabled><span>${category.name}</span>`;
+  label.className = `chip chip-${key}`;
+  label.innerHTML = `<input type="checkbox" value="${key}"><span>${category.name} ${category.emoji}</span>`;
   categoryBox.insertBefore(label, allCategories.parentElement);
+
+  // Faded description of the vibe under the picker
+  const info = document.createElement("p");
+  info.textContent = `${category.emoji} ${category.name}: ${category.description}`;
+  vibeInfo.append(info);
 }
 
 const categoryInputs = [...categoryBox.querySelectorAll("input[value]")];

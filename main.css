@@ -320,22 +320,40 @@ input:focus {
 .chip span {
   display: inline-block;
   padding: 0.45rem 1.1rem;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 999px;
   background: var(--bg);
   cursor: pointer;
 }
 
+/* Each vibe's colors; two colors make a gradient border */
+.chip { --vibe-a: var(--mint); --vibe-b: var(--mint); }
+.chip-chill { --vibe-a: #7fd6b3; --vibe-b: #9fe8cf; }
+.chip-party { --vibe-a: #a77bff; --vibe-b: #4fa3ff; }
+.chip-wild { --vibe-a: #ff6a2b; --vibe-b: #ffc933; }
+.chip-spicy { --vibe-a: #e8352b; --vibe-b: #ff5a3c; }
+.chip-date { --vibe-a: #f2709c; --vibe-b: #ff9ec4; }
+
+/* Picked: the border lights up in the vibe's colors with a soft glow */
 .chip input:checked + span {
-  border-color: var(--mint);
-  background: var(--mint);
-  color: var(--bg);
+  border-color: transparent;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(135deg, var(--vibe-a), var(--vibe-b)) border-box;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--vibe-a) 55%, transparent);
 }
 
-/* "Coming soon" types can't be picked yet */
-.chip input:disabled + span {
-  opacity: 0.4;
-  cursor: default;
+/* Faded list of what each vibe means, under the picker */
+.vibe-info {
+  margin: 0 0 1.5rem;
+  text-align: left;
+  opacity: 0.6;
+}
+
+.panel .vibe-info p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 /* "Give Me Crazy" stands out: pink-to-mustard and a soft glow */

@@ -4,6 +4,7 @@ const play = document.getElementById("play");
 const startButton = document.getElementById("start");
 const categoryBox = document.getElementById("categories");
 const allCategories = document.getElementById("all-categories");
+const vibeInfo = document.getElementById("vibe-info");
 
 // Show one section and hide the other
 function show(section) {
@@ -12,29 +13,23 @@ function show(section) {
   }
 }
 
-// Shuffled deck so prompts don't repeat until all have been used
-function makeDeck(list) {
-  let deck = [];
-  return function draw() {
-    if (deck.length === 0) {
-      deck = [...list].sort(() => Math.random() - 0.5);
-    }
-    return deck.pop();
-  };
-}
-
-// Filled in when the game starts, using the chosen prompt types
-let drawPrompt;
+// Filled in when the game starts: one deck of options per chosen vibe
+let vibeDecks = [];
 
 // --- Setup: picking prompt types ---
 
 // Add a chip for each type in prompts.js, before the "Give Me Crazy" chip.
-// The types are "coming soon" for now, so they're disabled and only "Give Me Crazy" can be picked.
+// Each chip gets a chip-<key> class so it lights up in its vibe's colors when picked.
 for (const [key, category] of Object.entries(CATEGORIES)) {
   const label = document.createElement("label");
-  label.className = "chip";
-  label.innerHTML = `<input type="checkbox" value="${key}" disabled><span>${category.name}</span>`;
+  label.className = `chip chip-${key}`;
+  label.innerHTML = `<input type="checkbox" value="${key}"><span>${category.name} ${category.emoji}</span>`;
   categoryBox.insertBefore(label, allCategories.parentElement);
+
+  // Faded description of the vibe under the picker
+  const info = document.createElement("p");
+  info.textContent = `${category.emoji} ${category.name}: ${category.description}`;
+  vibeInfo.append(info);
 }
 
 const categoryInputs = [...categoryBox.querySelectorAll("input[value]")];
@@ -65,17 +60,32 @@ for (const input of categoryInputs) {
 }
 
 startButton.addEventListener("click", () => {
-  const prompts = chosenCategories().flatMap((key) => CATEGORIES[key].prompts);
-  drawPrompt = makeDeck(prompts);
+  // A and B always come from the same vibe, so each vibe gets its own deck
+  vibeDecks = chosenCategories()
+    .map((key) => CATEGORIES[key].options)
+    .filter((options) => options.length >= 2)
+    .map((options) => ({ size: options.length, draw: makeDeck(options) }));
   showPrompt();
 });
 
 // --- Game ---
 
+// Pick a vibe (bigger vibes come up more often), then two options from it.
+// The deck never hands out the same option twice in a row, so A and B always differ.
+function drawPair() {
+  if (vibeDecks.length === 0) {
+    return { a: "Questions coming soon.", b: "Questions coming soon." };
+  }
+  const total = vibeDecks.reduce((sum, deck) => sum + deck.size, 0);
+  let roll = Math.random() * total;
+  const deck = vibeDecks.find((d) => (roll -= d.size) < 0) || vibeDecks[vibeDecks.length - 1];
+  return { a: deck.draw(), b: deck.draw() };
+}
+
 function showPrompt() {
-  const prompt = drawPrompt();
-  document.getElementById("option-a").textContent = prompt.a;
-  document.getElementById("option-b").textContent = prompt.b;
+  const pair = drawPair();
+  document.getElementById("option-a").textContent = pair.a;
+  document.getElementById("option-b").textContent = pair.b;
   show(play);
 }
 
